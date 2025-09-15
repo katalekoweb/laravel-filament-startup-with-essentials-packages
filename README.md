@@ -64,5 +64,7 @@ docker run --rm \
 ```
 
 ### Open the project in your browser
-http://locathost/app
-Login: username:admin@admin.com, password: password
+http://locathost/app  
+Login:   
+username:admin@admin.com   
+password: password
