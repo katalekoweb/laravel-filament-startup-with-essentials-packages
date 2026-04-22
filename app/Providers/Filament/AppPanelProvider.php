@@ -9,6 +9,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\Support\Assets\Js;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
@@ -31,6 +32,9 @@ class AppPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->sidebarFullyCollapsibleOnDesktop()
+            ->brandLogoHeight("40px")
+            ->brandLogo(fn() => view('filament.app.logo'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -54,6 +58,11 @@ class AppPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->assets([
+                Js::make('jquery', asset('/dist/js/jquery.js')),
+                Js::make('jquery-money', asset('/dist/js/jquery.maskMoney.min.js')),
+                // Js::make('jquery-mask', asset('/dist/js/jquery-mask.js')),
             ]);
     }
 }
